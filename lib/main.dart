@@ -42,6 +42,10 @@ class _HomePageState extends State<HomePage> {
     await Firebase.initializeApp();
     _messaging = FirebaseMessaging.instance;
 
+    String? token = await _messaging.getToken();
+    print("FCM TOKEN ==============================");
+    print(token);
+
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
     NotificationSettings settings = await _messaging.requestPermission(
